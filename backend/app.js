@@ -1,13 +1,10 @@
 const express=require("express")
 const app=express()
 require("./config/db")
+const bookRouter=require("./routes/booksRoutes")
 
-app.get("/",(req,res)=>{
-  res.send("Hello World")
-})
-/* app.get("/services",(req,res)=>{
-  res.send("Service Page")
-}) */
+app.use(express.json())
+app.use("/api/v1",bookRouter)
 
 app.listen(5000,(err)=>{
   if(!err){
